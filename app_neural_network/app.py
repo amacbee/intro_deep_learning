@@ -1,13 +1,13 @@
-from flask import Flask, render_template, request, jsonify
-from neural_network import *
-import numpy
+# -*- coding: utf-8 -*-
 
-import pprint
-pp = pprint.PrettyPrinter(indent=4)
+from flask import Flask, render_template, request, jsonify
+from neural_network import NeuralNetwork
+import numpy as np
+
 
 app = Flask(__name__)
-nn = NeuralNetwork(in_size = 784, hidden_size = 300, out_size = 10)
-nn.load("../data/neural_network.npz");
+nn = NeuralNetwork(input_size=784, hidden_size=300, output_size=10)
+nn.load("../data/neural_network.npz")
 
 @app.route("/")
 def index():
@@ -16,12 +16,13 @@ def index():
 @app.route("/estimate", methods = ["POST"])
 def estimate():
     try:
-        x = numpy.array(request.json["input"]) / 255.0
+        x = np.array(request.json["input"]) / 255.0
         y = int(nn.predicate(x))
-        return jsonify({"estimated":y})
+        return jsonify({"estimated": y})
+
     except Exception as e:
         print(e)
-        return jsonify({"error":e})
+        return jsonify({"error": e})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
