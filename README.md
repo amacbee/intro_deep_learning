@@ -18,4 +18,3 @@ http://deeplearning.net/tutorial/gettingstarted.html
 ```
 $ python pre_processing.py
 ```
-# intro_deep_learning
