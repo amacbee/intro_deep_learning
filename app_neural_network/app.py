@@ -6,7 +6,7 @@ import numpy as np
 
 
 app = Flask(__name__)
-nn = NeuralNetwork(input_size=784, hidden_size=300, output_size=10)
+nn = NeuralNetwork(input_size=784, hidden_size=324, output_size=10)
 nn.load("../data/neural_network.npz")
 
 @app.route("/")
