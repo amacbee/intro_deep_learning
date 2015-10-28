@@ -16,7 +16,7 @@ def prepare_mnist_data():
     with gzip.open('./data/mnist.pkl.gz', 'rb') as f:
         train, valid, test = pickle.load(f)
 
-    np.savez('./data/mnist', x_train=train[0], x_test=test[0], y_train=train[1], y_test=test[1])
+    np.savez('./data/mnist', X_train=train[0], X_test=test[0], y_train=train[1], y_test=test[1])
 
 
 if __name__ == "__main__":
